@@ -58,14 +58,14 @@ console.log(counter);
 if (counter === targetScore) {
 	wins++;
 	$("#results").text("You won! Play again!");
-	$("#userScore").html(0);
+
 	//setGame();
 }
  
 else if (counter > targetScore) {
 	loses++;
-	$("#results").text("You won! Play again!");
-	$("#userScore").html(0);
+	$("#results").text("You lost! Play again!");
+	
 
 }
 
