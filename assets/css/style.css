@@ -1,0 +1,35 @@
+
+h1 {
+	font-size: 40px;
+	font-weight: bold;
+	text-align: center;
+	padding-bottom: 30px;
+	padding-top: 10px;
+
+
+}
+
+p {
+	font-size: 20px;
+	padding: 10px;
+	line-height: 1.3em;
+}
+
+#wrapper {
+	border-width: 4px;
+	border-color: black;
+	border-style: solid;
+	text-align: center;
+	margin: 30px auto;
+	background-color: #24F8F6;
+}
+#target-number, 
+#results {
+	font-size: 40px;
+	font-weight: bold;
+	padding-bottom: 20px;
+}
+
+#crystals {
+	padding-bottom: 10px;
+}
