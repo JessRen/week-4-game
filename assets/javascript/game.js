@@ -14,13 +14,24 @@ var images = ['./assets/images/ruby.jpeg', './assets/images/emerald.jpg', './ass
 
 $( document ).ready(function() {
 
+function resetGame() {
+	targetScore = Math.floor(Math.random() * 100 + 19);
+	$("#target-number").html(targetScore);
+	counter = 0;
+	$("#userScore").html("User Score: " + counter);
+	var images = $("img");
+	for (var i = 0; i < images.length; i++) {
+		$(images[i]).attr('data-value', Math.floor(Math.random() * 10))
+	} 
+}
+
 function setGame() {
 	//$("#crystals").empty();
 	targetScore = Math.floor(Math.random() * 100 + 19);
 	$("#target-number").html(targetScore);
-	$("#userScore").html(counter);
-	$("#won").html(wins);
-	$("#lost").html(loses);
+	$("#userScore").html("User Score: " + counter);
+	$("#won").html("Wins: " + wins);
+	$("#lost").html("Loses: " + loses);
 		// grab and append wins and loses - rolling into one for this master function
 		// append userScore
 
@@ -35,41 +46,43 @@ function setGame() {
 		img.attr('src', images[i]);
 		img.attr('height', '100px');
 		img.attr('width', '100px');
-		img.attr('data-value', Math.floor(Math.random() * 10 + 1));
-			// console.log(Math.floor(Math.random() * 10 + 1));
-			$("#crystals").append(img);
+		img.attr('data-value', Math.floor(Math.random() * 10));
+		$("#crystals").append(img);
 		// assign the image a classname
 		// assign the image a attribute named data-value and give it a random number between 1-12 
 		// append images to the html
 	} // end of for-loop
+$("body").on("click", ".stones", function() {
 
-} // end of function setGame()
-
-	setGame(); //this starts the game
-
-$("img").on("click", function() {
-	console.log("Working");
 // store the data value of clicked crystal in variable
-var dazzle = $(this).attr('data-value');
+var dazzle = $(this).attr('data-value')
+			// console.log(Math.floor(Math.random() * 10 + 1));
 counter = parseInt(dazzle) + parseInt(counter);
-$("#userScore").text(counter);
+$("#userScore").text("User Score: " + counter);
 console.log(counter);
 
 if (counter === targetScore) {
 	wins++;
+	$("#won").html("Wins: " + wins);
 	$("#results").text("You won! Play again!");
-	$("#userScore").html(0);
-	//setGame();
+	resetGame();
+	
 }
  
 else if (counter > targetScore) {
 	loses++;
+	$("#lost").html("Loses: " + loses);
 	$("#results").text("You lost! Play again!");
-	$("#userScore").html(0);
-
+	resetGame();
+	
 }
 
 });
+} // end of function setGame()
+
+	setGame(); //this starts the game
+
+
 
 });
 
